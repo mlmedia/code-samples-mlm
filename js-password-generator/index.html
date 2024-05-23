@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Password generator</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		*,
+		:before,
+		:after {
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		body {
+			background-color: #f3f3f3;
+			color: #333;
+			font-family: arial, helvetica, sans-serif;
+			font-size: 14px;
+			line-height: 1.6em;
+			position: relative;
+		}
+
+		.container {
+			margin: 0 auto;
+			padding: 1em;
+			width: 960px;
+		}
+
+		h1,
+		h2,
+		h3,
+		h4 {
+			line-height: 1.4em;
+			margin: .4em 0 .6em;
+			padding: 0;
+		}
+
+		p {
+			margin-bottom: 1.4em;
+		}
+
+		hr {
+			border: 0;
+			border-top: 1px solid #ddd;
+			margin: 1.4em 0;
+		}
+
+		input[type="text"],
+		input[type="password"],
+		input[type="email"],
+		input[type="tel"],
+		input[type="search"],
+		select {
+			-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+			-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+			-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+			background-color: #fff;
+			background-image: none;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+			color: #555;
+			display: block;
+			height: 38px;
+			line-height: 1.42857143;
+			padding: 8px 12px;
+			transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+			width: 100%;
+		}
+
+		.field {
+			margin: 1em 0 2em;
+		}
+
+		.whitebox {
+			-moz-border-radius: .4em;
+			-moz-box-shadow: 0 0 .5em #ccc;
+			-webkit-border-radius: .4em;
+			-webkit-box-shadow: 0 0 .5em #ccc;
+			background-color: #fff;
+			background-image: none;
+			border: 1px solid #ccc;
+			border-radius: .4em;
+			box-shadow: 0 0 .4em #ccc;
+			min-height: 420px;
+			padding: 2em 2em 3em;
+		}
+
+		.btn {
+			-moz-box-shadow: inset 0 1px 0 0 #c1ed9c;
+			-webkit-box-shadow: inset 0 1px 0 0 #c1ed9c;
+			background: 0;
+			background-color: #9dce2c;
+			border: 1px solid #83c41a;
+			box-shadow: inset 0 1px 0 0 #c1ed9c;
+			color: #fff;
+			cursor: pointer;
+			display: inline-block;
+			filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#9dce2c', endColorstr='#8cb82b');
+			font-family: Arial;
+			font-size: 15px;
+			font-style: normal;
+			font-weight: 700;
+			height: 50px;
+			line-height: 50px;
+			padding: 0 2em;
+			text-align: center;
+			text-decoration: none;
+			text-indent: 0;
+			text-shadow: 1px 1px 0 #689324;
+		}
+
+		.btn:hover {
+			background: 0;
+			background-color: #8cb82b;
+			filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#8cb82b', endColorstr='#9dce2c');
+		}
+
+		.btn:active {
+			position: relative;
+			top: 1px;
+		}
+
+		.field_contain .field {
+			width: 50%;
+		}
+
+		.field_contain label {
+			clear: both;
+			display: block;
+			font-size: 1.2em;
+			font-weight: 700;
+			margin-bottom: .6em;
+			width: 100%;
+		}
+
+		#output_container {
+			margin-top: 1em;
+		}
+
+		#output_container input[type="text"] {
+			clear: both;
+			font-size: 1.4em;
+			height: 42px;
+			padding: 10px 14px;
+		}
+
+		.back-link {
+			font-size: 1.25rem;
+			margin-bottom: 1rem;
+			display: block;
+			text-decoration: none;
+		}
+
+		@media (max-width:979px) {
+			.container {
+				width: 100%;
+			}
+		}
+
+		@media (max-width:790px) {
+			.field_contain .field {
+				width: 100%;
+			}
+		}
+
+		@media (max-width:500px) {
+			.btn {
+				display: block;
+				width: auto;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<a class="back-link" href="/news/password-generator/" title="Password generator"><< Back to Password generator</a>
+		<div class="whitebox">
+			<h1>Password generator</h1>
+			<p>
+				This is a demo for a JavaScript password generator as described here: <a href="/news/password-generator/" title="Dock Street Media - News">https://www.dockstreetmedia.com/news/password-generator/</a>.
+			</p>
+			<p>
+				The GitHub repository can be viewed here: [https://github.com/mlmedia/password-generator](https://github.com/mlmedia/password-generator).
+			</p>
+			<hr />
+			<p>
+				<strong>How to use</strong>: Click the button below to generate a secure random password. The password is generated from a random selection of alpha-numeric characters as well as underscores and special characters if selected in the
+				form. Although not the
+				type of password you generally memorize, similar characters were removed, such as 0 and O.
+			</p>
+			<hr />
+			<form id="form_password_generate" name="form_password_generate" action="#" method="post" role="form">
+				<div class="field_contain">
+					<div class="field">
+						<label>Length of string</label>
+						<select name="length" id="input_length">
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15" selected="selected">15 (recommended minimum)</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>
+						</select>
+					</div>
+				</div>
+				<div class="field">
+					<div class="checkbox">
+						<label>
+							<input id="input_underscores" name="input_underscores" type="checkbox" checked="checked" /> Include underscores (_) - <i><b>Recommended</b></i>
+						</label>
+					</div>
+				</div>
+				<div class="field">
+					<div class="checkbox">
+						<label>
+							<input id="input_special" name="input_special" type="checkbox" /> Include special characters (@, #, $, %, etc.) - <i><b>Recommended</b></i>
+						</label>
+					</div>
+				</div>
+				<div class="field">
+					<a href="#" class="btn generate_trigger">Generate Password</a>
+				</div>
+				<div id="output_container" class="field_contain">
+					<hr />
+					<div class="field">
+						<label>Your generated password is:</label>
+						<input type="text" id="output_target" value="" />
+					</div>
+				</div>
+			</form>
+			<hr />
+			<p>
+				<b>NOTE:</b> your password is generated by JavaScript on the client-side (i.e. in your browser / device). It is not printed or posted to anywhere except your browser / device screen, so the result is completely private and secure.
+			</p>
+		</div>
+		<script type="text/javascript">
+			/* JS function to generate random string - preferred method */
+			function random_string(len, use_underscores, use_special) {
+				/* empty output string */
+				var str = '';
+
+				/* set a temp string to pass characters - we do this to ensure underscores / special characters make it to the final output */
+				var temp_string = '';
+
+				/* set the rest of the vars */
+				var alphanum_chars = 'abcdefghijkmnprstuvwxyzACDEFGHJKLMNPRTUVWXY2346789'; /* similar chars removed - e.g. 0 and O */
+				var special_chars = '!@#$%^*?';
+				var underscores = '____'; /* multiple to make them more likely */
+				var new_len = len - 2; /* remove 2 chars for the beginning and end alpha-numeric chars only */
+
+				/* number of special characters to add to the string - if less than 12, add 2 each, otherwise add 3 each */
+				var num_special = 2;
+				if (len > 12) {
+					num_special = 3;
+				}
+
+				/* if underscores is selected, add to the temp string */
+				if (use_underscores) {
+					for (var i = 0; i < num_special; i++) {
+						temp_string += underscores.charAt(Math.floor(Math.random() * underscores.length));
+					}
+					new_len = new_len - num_special; /* remove the number of chars used - the remainder will be alpha-numeric as set below */
+				}
+
+				/* if special characters is selected, add to the temp string */
+				if (use_special) {
+					for (var i = 0; i < num_special; i++) {
+						temp_string += special_chars.charAt(Math.floor(Math.random() * special_chars.length));
+					}
+					new_len = new_len - num_special; /* remove the number of chars used - the remainder will be alpha-numeric as set below */
+				}
+
+				/* set the remainder as alpha-numeric */
+				for (var i = 0; i < new_len; i++) {
+					temp_string += alphanum_chars.charAt(Math.floor(Math.random() * alphanum_chars.length));
+				}
+
+				console.log(temp_string);
+
+				/* pass the random characters to the string */
+				/* first character should be alpha-numeric */
+				str += alphanum_chars.charAt(Math.floor(Math.random() * alphanum_chars.length));
+
+				/* shuffle the temp string and put it in the middle */
+				str += shuffle(temp_string);
+
+				/* last character should be alpha-numeric */
+				str += alphanum_chars.charAt(Math.floor(Math.random() * alphanum_chars.length));
+
+				/* return the string */
+				return str;
+			}
+
+			/* shuffle a string */
+			function shuffle(string) {
+				var parts = string.split('');
+				for (var i = parts.length; i > 0;) {
+					var random = parseInt(Math.random() * i);
+					var temp = parts[--i];
+					parts[i] = parts[random];
+					parts[random] = temp;
+				}
+				return parts.join('');
+			}
+
+			/* print the random string to the text field "output_target" */
+			var print_string = function(e) {
+				e.preventDefault();
+				var output_target = document.getElementById('output_target');
+				var input_length_el = document.getElementById('input_length');
+				var input_length_val = input_length_el.options[input_length_el.selectedIndex].value;
+				var use_underscores = document.getElementById('input_underscores').checked;
+				var use_special = document.getElementById('input_special').checked;
+				var result = random_string(input_length_val, use_underscores, use_special);
+				output_target.value = result;
+			};
+
+			/* add event listener function */
+			var generate_btns = document.getElementsByClassName('generate_trigger');
+
+			/* click event listener for the generate button */
+			for (var i = 0; i < generate_btns.length; i++) {
+				generate_btns[i].addEventListener('click', print_string, false);
+			}
+		</script>
+	</div>
+</body>
+
+</html>
